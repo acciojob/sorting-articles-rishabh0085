@@ -1,20 +1,24 @@
-// Given bands array
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+//your JS code here. If required.
+document.addEventListener('DOMContentLoaded', function () {
+    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
-// Function to strip common prefixes
-function strip(bandName) {
-  return bandName.replace(/^(a |the |an )/i, '').trim();
-}
+    
+    function sortBands(bands) {
+        const excludedWords = ["a", "an", "the"];
+        return bands.sort((a, b) => {
+            const cleanA = a.replace(/(^|\s)(a|an|the)($|\s)/g, ' ').trim();
+            const cleanB = b.replace(/(^|\s)(a|an|the)($|\s)/g, ' ').trim();
+            return cleanA.localeCompare(cleanB, 'en', { sensitivity: 'base' });
+        });
+    }
 
-// Sort the bands array with a custom compare function
-const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+    const sortedBands = sortBands(bands);
+    const bandsList = document.getElementById('bandsList');
 
-// Select the unordered list (ul) element
-const list = document.getElementById('band');
-
-// Create and append the list items (li) to the ul
-sortedBands.forEach(band => {
-  const li = document.createElement('li');
-  li.textContent = band;
-  list.appendChild(li);
+   
+    sortedBands.forEach(band => {
+        const listItem = document.createElement('li');
+        listItem.textContent = band;
+        bandsList.appendChild(listItem);
+    });
 });
