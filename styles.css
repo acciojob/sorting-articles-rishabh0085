@@ -1,1 +1,21 @@
 /*  your css code here. If applicable */
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing:border-box;
+	
+}
+body{
+	background:url("https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+#container{
+	display: flex;
+	justify-content: center;
+}
+#bands{
+	background-color: white;
+}
+#bands>li{
+	list-style: square;
+	margin: 20px 30px;
+}
